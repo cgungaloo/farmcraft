@@ -4,6 +4,7 @@
   <title>Bootstrap Card</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="#">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/home.css') }}"></link>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
@@ -12,7 +13,7 @@
   <script>
 
     async function getWateringLog(){
-      const response = await fetch('http://127.0.0.1:5000/water_log');
+      const response = await fetch('http://192.168.1.163:5000//water_log');
       const data = await response.json();
       const wateringReadings = data.readings;
       let table = `<table class="table table-light table-striped">

@@ -16,6 +16,7 @@ def temp():
         
     response =  jsonify({"readings": reader})
     response.headers.add('Access-Control-Allow-Origin', '*')
+    print(response)
     return response
 
 
