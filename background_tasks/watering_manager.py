@@ -1,15 +1,26 @@
 from datetime import datetime
 import time
 import csv
+import RPi.GPIO as GPIO
 
 file_name = "app_data/water_log.csv"
 flag = True
+
+# Pin configuration
+DO_PIN = 17  # Digital output connected to GPIO17
+PUMP_PIN = 14
+
+# Setup
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(DO_PIN, GPIO.IN)
+GPIO.setup(PUMP_PIN, GPIO.OUT)
+
 while flag:
     try:
-        print("reading_temperature....")
+        moisture_status = GPIO.input(DO_PIN)
+        print(f"Moisture Status : {moisture_status}")
         now = datetime.now()
-        seconds = now.second
-        if seconds % 5 ==0:
+        if moisture_status == 0:
             print("watering...")
             with open(file_name,'r',newline='') as file:
                 reader = list(csv.reader(file))
@@ -26,3 +37,25 @@ while flag:
     except KeyboardInterrupt:
         print("\nProcess interrupted. Exiting gracefully.")
         flag = False
+
+
+# # Setup
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setup(DO_PIN, GPIO.IN)
+# GPIO.setup(PUMP_PIN, GPIO.OUT)
+
+# try:
+#     while True:
+#         moisture_status = GPIO.input(DO_PIN)
+#         if moisture_status == 0:
+#             print("Soil is moist")
+#         else:
+#             print("Soil is dry")
+#             GPIO.output(PUMP_PIN, GPIO.HIGH)
+#             time.sleep(3)
+#             GPIO.output(PUMP_PIN, GPIO.LOW)
+#         time.sleep(5)
+
+# except KeyboardInterrupt:
+#     print("Exiting...")
+#     GPIO.cleanup()
