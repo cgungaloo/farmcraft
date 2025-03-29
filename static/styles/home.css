@@ -3,13 +3,56 @@
     font-family: Verdana, sans-serif;
     font-size: 35px;
     font-weight: bold;
+    width:100%;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .card-body img{
     height: 50px;
-    width: 50px;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 #readings tr{
-    font-size: 20px;;
+    font-size: 20px;
+    width:100%;
+}
+
+
+#readings {
+    width: 100%;
+    overflow-x: auto; /* Ensures scrolling on small screens */
+}
+
+.table{
+    width: 100%;
+    table-layout: auto;
+    white-space: nowrap;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Target mobile screens for extra caution */
+@media (max-width: 768px) {
+    #readings {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .table {
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+    }
+
+    /* Optional: Add padding for better mobile view */
+    .card-body {
+        padding: 10px;
+    }
 }
