@@ -3,8 +3,10 @@ import time
 import csv
 import RPi.GPIO as GPIO
 import Adafruit_DHT
+import json
 
 file_name = "app_data/water_log.csv"
+temperature_file_name = "app_data/temperature_log.txt"
 flag = True
 
 # Pin configuration
@@ -22,6 +24,9 @@ while flag:
         print(f"Moisture Status : {moisture_status}")
         now = datetime.now()
         humidity, temperature = Adafruit_DHT.read_retry(11, 27)
+        with open(temperature_file_name, 'w') as tempf:
+            tempf.write(f"{temperature}\n")
+
         print('Temp: {0:0.1f} C  Humidity: {1:0.1f} %'.format(temperature, humidity))
         
         if moisture_status == 1:
