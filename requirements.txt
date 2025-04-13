@@ -1,3 +1,4 @@
 Flask
 requests
 adafruit-circuitpython-dht
+Flask-HTTPAuth
