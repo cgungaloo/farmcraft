@@ -13,7 +13,7 @@
   <script>
 
     async function getWateringLog(){
-      const response = await fetch('http://192.168.1.163:5000//water_log');
+      const response = await fetch('http://{ip}:5000//water_log');
       const data = await response.json();
       const wateringReadings = data.readings;
       let table = `<table class="table table-light table-striped">
@@ -41,7 +41,7 @@
     }
 
     async function getTemperature(){
-      const response = await fetch('http://192.168.1.163:5000/temp_log');
+      const response = await fetch('http://{ip}:5000/temp_log');
       const data = await response.json();
       const temperatureReading = data.temperature;
       document.getElementById('temperature').innerText = 

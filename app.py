@@ -1,6 +1,8 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from datetime import datetime
 import csv
+import json
+
 
 app = Flask(__name__)
 file_name = "app_data/water_log.csv"

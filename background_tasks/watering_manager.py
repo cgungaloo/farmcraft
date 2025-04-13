@@ -21,7 +21,6 @@ GPIO.setup(PUMP_PIN, GPIO.OUT)
 while flag:
     try:
         moisture_status = GPIO.input(DO_PIN)
-        print(f"Moisture Status : {moisture_status}")
         now = datetime.now()
         humidity, temperature = Adafruit_DHT.read_retry(11, 27)
         with open(temperature_file_name, 'w') as tempf:
